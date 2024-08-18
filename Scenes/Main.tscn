@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b184pa0bjeg12"]
+
+[ext_resource type="PackedScene" uid="uid://ugoflwr3hohe" path="res://Scenes/Characters/UnitNormalSoldier.tscn" id="2_sbuer"]
+[ext_resource type="PackedScene" uid="uid://cclng2k7tmfvx" path="res://Scenes/Game/Camera/GlobalCamera.tscn" id="2_v7kx5"]
+
+[node name="Main" type="Node3D"]
+
+[node name="GlobalCamera" parent="." instance=ExtResource("2_v7kx5")]
+transform = Transform3D(0.885133, -0.147738, 0.441264, 0.0211652, 0.960064, 0.27898, -0.464857, -0.237595, 0.852911, 0.909456, 1.16045, 0)
+wall_min_slide_angle = 0.511381
+
+[node name="Camera3D2" type="Camera3D" parent="GlobalCamera"]
+
+[node name="NormalSoldier" parent="." instance=ExtResource("2_sbuer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12437, 0, -3.21722)

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://cclng2k7tmfvx"]
+
+[ext_resource type="Script" path="res://Scripts/Game/Camera/GlobalCamera.cs" id="1_gr3gv"]
+[ext_resource type="Script" path="res://Scripts/Game/Camera/PlayerState/PlayerCameraMoveState.cs" id="2_336pd"]
+[ext_resource type="PackedScene" uid="uid://7lel5a6mu5wt" path="res://Scenes/General/state_machine.tscn" id="2_s2nqb"]
+[ext_resource type="Script" path="res://Scripts/Game/Camera/PlayerState/PlayerCameraIdleState.cs" id="3_ruktk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e1tpx"]
+size = Vector3(0.334198, 0.28949, 0.42926)
+
+[node name="GlobalCamera" type="CharacterBody3D" node_paths=PackedStringArray("StateMachineNode")]
+collision_layer = 0
+motion_mode = 1
+script = ExtResource("1_gr3gv")
+StateMachineNode = NodePath("StateMachine")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("currentState", "states") instance=ExtResource("2_s2nqb")]
+currentState = NodePath("IdleState")
+states = [NodePath("IdleState"), NodePath("MovingState")]
+
+[node name="IdleState2" type="Node" parent="StateMachine"]
+script = ExtResource("3_ruktk")
+
+[node name="MovingState2" type="Node" parent="StateMachine"]
+script = ExtResource("2_336pd")
+cameraMoveSpeed = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0302016, -0.00562897, 0.0575256)
+shape = SubResource("BoxShape3D_e1tpx")
