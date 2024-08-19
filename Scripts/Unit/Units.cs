@@ -1,6 +1,6 @@
 using Godot;
 
-public abstract partial class Characters : CharacterBody3D {
+public abstract partial class Units : CharacterBody3D {
     [ExportGroup("Required Nodes")]
     [Export] public AnimationPlayer AnimationPlayerNode {get; private set;}
     [Export] public Sprite3D SpritePlayerNode {get; private set;}

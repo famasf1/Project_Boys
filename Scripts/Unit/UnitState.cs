@@ -1,12 +1,12 @@
 using Godot;
 
-public abstract partial class CharacterState : Node
+public abstract partial class UnitState : Node
 {
-    protected Characters characterNode;
+    protected Units characterNode;
 
     public override void _Ready()
     {
-        characterNode = GetOwner<Characters>();
+        characterNode = GetOwner<Units>();
         SetPhysicsProcess(false);
         SetProcessInput(false);
     }
